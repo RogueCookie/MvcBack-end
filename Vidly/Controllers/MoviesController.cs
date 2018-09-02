@@ -45,7 +45,7 @@ namespace Vidly.Controllers
                             //result ://localhost:52105/?page=1&sortBy=name
 
         }
-
+        /*
         public ActionResult Edit(int Id)
         {
             return Content("id =" + Id);
@@ -69,7 +69,7 @@ namespace Vidly.Controllers
         {
             return Content(year +"/"+ month);
         }
-        
+        */
 
     }
 }
