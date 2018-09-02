@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Vidly.Models;
+using Vidly.ViewModels;
 
 namespace Vidly.Controllers
 {
@@ -15,8 +16,27 @@ namespace Vidly.Controllers
         {
             //an instance of movie model
             var movie = new Movie() { Name = "Shrek!" };
+            var customers = new List<Customer>
+            {
+                new Customer { Name = "Customer 1" },
+                new Customer { Name = "Customer 2" }
+            };
+            //create model object
+            var viewModel = new RandomMovieViewModel
+            {
+                //initialise movie proporty
+                Movie = movie,
+                Customers = customers
+            };
 
-            return View(movie);
+
+            //ViewData["Movie"] = movie; //viewdata dictionary-to pass movie to the view
+            //ViewBag.Movie = movie; //
+
+            //var viewResult = new ViewResult();
+            //viewResult.ViewData.Model;
+
+            return View(viewModel); //this movie object passed here will be assign with property model
             //return new ViewResult();
             //return Content("Hello World!");
             //return HttpNotFound();
