@@ -12,6 +12,13 @@ namespace Vidly
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            
+            //order matters. put bebore default routes. Customer route
+            routes.MapRoute(
+                "MoviesByReleaseDate", 
+                "movies/released/{year}/{month}",    //url pattern
+                new { controller = "Movies", action = "ByReleaseDate" }     //second parametr specify the default
+                ); 
 
             routes.MapRoute(
                 name: "Default",
