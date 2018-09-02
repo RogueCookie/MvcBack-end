@@ -1,9 +1,11 @@
-﻿@
+﻿@**model directive*@
+@model Vidly.ViewModels.RandomMovieViewModel
+
 <!DOCTYPE html>
 <html>
 <head>
     @**rendered te partial view*@
-    @Html.Partial("_NavBar", Model)
+    @Html.Partial("_NavBar", Model.Movie)
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
