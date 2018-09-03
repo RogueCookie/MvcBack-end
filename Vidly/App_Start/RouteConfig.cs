@@ -13,7 +13,7 @@ namespace Vidly
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapMvcAttributeRoutes(); //enableing arrt rout
+            routes.MapMvcAttributeRoutes(); //enabling arrt rout
 
             /*
             //order matters. put bebore default routes. Customer route

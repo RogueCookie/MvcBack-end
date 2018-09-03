@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Vidly.Models.Customer>
+
+@{
+    ViewBag.Title = "Customers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Customers</h2>
+@if (!Model.Any())
+{
+    <p> We don't have any customers yet.</p>
+}
+else
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                public ViewResult Index()
+                {
+                var movies = GetMovies();
+                return View(movies);
+                }
+
+                private IEnumerable
+                <Movie>
+                    GetMovies()
+                    {
+                    return new List<Movie>
+                        {
+                        new Movie { Id = 1, Name = "Shrek" },
+                        new Movie { Id = 2, Name = "Wall-e" }
+                        };
+                        }
+
+                        public ActionResult Random()
+                        {
+                        var movie = new Movie() { Name = "Shrek!" };
+                        var customers = new List<Customer>
+                            {
+                            new Customer { Name = "Customer 1" },
+                            new Customer { Name = "Customer 2" }
+                            };
+
+                            var viewModel = new RandomMovieViewModel
+                            {
+                            Movie = movie,
+                            Customers = customers
+                            };
+                            return View(viewModel);
+                            }
+                            <th>Customer</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var customer in Model)
+            {
+                <tr>
+                    <td>@Html.ActionLink(customer.Name, "Details", "Customers", new { id = customer.Id }, null)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
