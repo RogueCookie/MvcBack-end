@@ -20,6 +20,7 @@ namespace Vidly.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        //public DbSet<Customer> Customers { get; set; } //represent customer's table
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
