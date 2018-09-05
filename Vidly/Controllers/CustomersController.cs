@@ -9,6 +9,19 @@ namespace Vidly.Controllers
 {
     public class CustomersController : Controller
     {
+        private ApplicationDbContext _context;  //dbcontext to access db and initialize it in constructor
+
+        public CustomersController()
+        {
+            _context = new ApplicationDbContext();  //disposable object
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+        }
+
+
         public ViewResult Index()
         {
             var customers = GetCustomers();
