@@ -24,25 +24,26 @@ namespace Vidly.Controllers
 
         public ViewResult Index()
         {
-            var customers = GetCustomers();
+            var customers = _context.Customers.ToList(); //get all customers in db// that call deferred executions
+                                        //for immidiatly executed query by calling ToList()
             return View(customers);
         }
 
         public ActionResult Details(int id)
         {
-            var customer = GetCustomers().SingleOrDefault(c => c.Id == id);//can either use foreach or lamda expression as stated
+            var customer = _context.Customers.SingleOrDefault(c => c.Id == id);//can either use foreach or lamda expression as stated
             if (customer == null)
                 return HttpNotFound();
             return View(customer);
         }
 
-        private IEnumerable<Customer> GetCustomers()
+        /*private IEnumerable<Customer> GetCustomers()
         {
             return new List<Customer>
             {
                 new Customer { Id = 1, Name = "John Smith" },
                 new Customer { Id = 2, Name = "Marry Williams" }
             };
-        }
+        }*/
     }
 }
