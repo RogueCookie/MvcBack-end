@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Vidly.Models;
+using System.Data.Entity;
 
 namespace Vidly.Controllers
 {
@@ -24,7 +25,7 @@ namespace Vidly.Controllers
 
         public ViewResult Index()
         {
-            var customers = _context.Customers.ToList(); //get all customers in db// that call deferred executions
+            var customers = _context.Customers.Include(c => c.MembershipType).ToList(); //get all customers in db// that call "deferred executions"
                                         //for immidiatly executed query by calling ToList()
             return View(customers);
         }
