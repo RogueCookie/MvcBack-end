@@ -15,5 +15,6 @@ namespace Vidly.Models
         public bool IsSubscribedToNewsLetter { get; set; }
         public MembershipType MembershipType { get; set; }        //navigation property (load customer and membership together)
         public byte MembershipTypeId { get; set; } //for optimization EF recognize that conventions and trets this prop as a foreign key
+        public DateTime? Birthdate { get; set; } //nullable
     }
 }

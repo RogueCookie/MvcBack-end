@@ -32,7 +32,7 @@ namespace Vidly.Controllers
 
         public ActionResult Details(int id)
         {
-            var customer = _context.Customers.SingleOrDefault(c => c.Id == id);//can either use foreach or lamda expression as stated
+            var customer = _context.Customers.Include(c => c.MembershipType).SingleOrDefault(c => c.Id == id);//can either use foreach or lamda expression as stated
             if (customer == null)
                 return HttpNotFound();
             return View(customer);
