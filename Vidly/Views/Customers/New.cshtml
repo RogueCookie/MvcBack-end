@@ -19,10 +19,12 @@
         @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
     </div>
     <div class="form-group">
+        @*<label for="Birthdate">Date of Birth</label>
+        *forfocus behviour <label for*@
         @Html.LabelFor(m => m.Birthdate)
-
         @Html.TextBoxFor(m => m.Birthdate, new { @class = "form-control" })
     </div>
+
     @*<div class="form-group">
         @Html.LabelFor(m => m.IsSubscribedToNewsLetter)
 
