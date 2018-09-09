@@ -34,6 +34,14 @@ namespace Vidly.Controllers
             return View(viewModel);
         }
 
+        [HttpPost]
+        public ActionResult Create(Customer customer)  //that calls "model biding". EF binds viewModel to request data
+       // public ActionResult Create(NewCustomerViewModel viewModel)
+        {
+            return View();
+        }
+
+
         public ViewResult Index()
         {
             var customers = _context.Customers.Include(c => c.MembershipType).ToList(); //get all customers in db// that call "deferred executions"

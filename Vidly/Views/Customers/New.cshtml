@@ -8,7 +8,7 @@
 
 <h2>New Customer</h2>
 
-@*Html.BeginForm -its renging begining <form> ans the end of the using blog the object return Html.BeginForm will be dispose
+@*Html.BeginForm -its rending begining <form> ans the end of the using blog the object return Html.BeginForm will be dispose
     and in dispose it will be equal </form>*@
 @using (Html.BeginForm("Create", "Customers"))
 {
@@ -42,11 +42,12 @@
 
     <div class="form-group">
         @*<label for="Birthdate">Date of Birth</label>
-        *forfocus behviour <label for*@
+            *forfocus behviour <label for*@
         @Html.LabelFor(m => m.Customer.MembershipTypeId)
         @Html.DropDownListFor(m => m.Customer.MembershipTypeId, new SelectList(Model.MembershipTypes, "Id", "Name"), "Select Membership Type", new { @class = "form-control" })
         @*new SelectList - suply a list items for dropdown list(list imem, specify a name of the prop in membersh class, prop that hols a text), "Empty string" or  *@
     </div>
-
+    <button type="submit" class="btn btn-primary">Save</button>
+    @*btn - required for all buttons, btn-primary - represent a primary action use that view *@
 }
 
