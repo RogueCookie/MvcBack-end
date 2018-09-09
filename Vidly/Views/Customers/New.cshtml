@@ -1,4 +1,4 @@
-﻿@model Vidly.Models.Customer
+﻿@model Vidly.ViewModels.NewCustomerViewModel
 @{
     /**/
 
@@ -13,30 +13,40 @@
 @using (Html.BeginForm("Create", "Customers"))
 {
     <div class="form-group">
-        @Html.LabelFor(m => m.Name)
+        @Html.LabelFor(m => m.Customer.Name)
         @*when razer view enging rending this view. it loock name prop and use this as the value for html label*@
 
-        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+        @Html.TextBoxFor(m => m.Customer.Name, new { @class = "form-control" })
     </div>
     <div class="form-group">
         @*<label for="Birthdate">Date of Birth</label>
-        *forfocus behviour <label for*@
-        @Html.LabelFor(m => m.Birthdate)
-        @Html.TextBoxFor(m => m.Birthdate, new { @class = "form-control" })
+            *forfocus behviour <label for*@
+        @Html.LabelFor(m => m.Customer.Birthdate)
+        @Html.TextBoxFor(m => m.Customer.Birthdate, new { @class = "form-control" })
     </div>
 
     @*<div class="form-group">
-        @Html.LabelFor(m => m.IsSubscribedToNewsLetter)
+            @Html.LabelFor(m => m.IsSubscribedToNewsLetter)
 
-        @Html.CheckBoxFor(m => m.IsSubscribedToNewsLetter, new { @class = "form-control" })
-    </div>*@
+            @Html.CheckBoxFor(m => m.IsSubscribedToNewsLetter, new { @class = "form-control" })
+        </div>*@
+
 
     @*from getbootstrap.com (form)*@
     <div class="checkbox">
         <label>
             @*<input type="checkbox"> Check me out - two ways with similar*@
-            @Html.CheckBoxFor(m => m.IsSubscribedToNewsLetter) Subscribed to NewsLetter?
+            @Html.CheckBoxFor(m => m.Customer.IsSubscribedToNewsLetter) Subscribed to NewsLetter?
         </label>
     </div>
+
+    <div class="form-group">
+        @*<label for="Birthdate">Date of Birth</label>
+        *forfocus behviour <label for*@
+        @Html.LabelFor(m => m.Customer.MembershipTypeId)
+        @Html.DropDownListFor(m => m.Customer.MembershipTypeId, new SelectList(Model.MembershipTypes, "Id", "Name"), "Select Membership Type", new { @class = "form-control" })
+        @*new SelectList - suply a list items for dropdown list(list imem, specify a name of the prop in membersh class, prop that hols a text), "Empty string" or  *@
+    </div>
+
 }
 
