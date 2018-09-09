@@ -35,15 +35,31 @@ namespace Vidly.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(Customer customer)  //that calls "model biding". EF binds viewModel to request data
+        public ActionResult Save(Customer customer)  //that calls "model biding". EF binds viewModel to request data
        // public ActionResult Create(NewCustomerViewModel viewModel)
         {
-            _context.Customers.Add(customer);//for modify object
+            if(customer.Id == 0)//checked has customer Id or not. 0 means that's new customer/ otherwise we should update it
+            //we relying on customer id
+                _context.Customers.Add(customer);//for modify object
+            else
+            {
+                var customerInDb = _context.Customers.Single(c => c.Id == customer.Id);
+
+                //Mapper.Map(customer, customerInDb);
+
+                //TryUpdateModel(customerInDb, "", new string[] { "Name", "Email" });
+                customerInDb.Name = customer.Name;
+                customerInDb.Birthdate = customer.Birthdate;
+                customerInDb.MembershipTypeId = customer.MembershipTypeId;
+                customerInDb.IsSubscribedToNewsLetter = customer.IsSubscribedToNewsLetter;
+            }
+
             _context.SaveChanges();
 
             //redirecket user back to the list of customer
             return RedirectToAction("Index", "Customer"); //index in customer controller
         }
+
 
         public ActionResult Edit(int id)
         {

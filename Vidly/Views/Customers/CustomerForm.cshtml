@@ -10,7 +10,7 @@
 
 @*Html.BeginForm -its rending begining <form> ans the end of the using blog the object return Html.BeginForm will be dispose
     and in dispose it will be equal </form>*@
-@using (Html.BeginForm("Create", "Customers"))
+@using (Html.BeginForm("Save", "Customers"))
 {
     <div class="form-group">
         @Html.LabelFor(m => m.Customer.Name)
