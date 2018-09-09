@@ -26,21 +26,41 @@ namespace Vidly.Controllers
         public ActionResult New()
         {
             var membershipTypes = _context.MembershipTypes.ToList();
-            var viewModel = new NewCustomerViewModel
+            var viewModel = new CustomerFormViewModel
             {
                 MembershipTypes = membershipTypes
             };
 
-            return View(viewModel);
+            return View("CustomerForm");
         }
 
         [HttpPost]
         public ActionResult Create(Customer customer)  //that calls "model biding". EF binds viewModel to request data
        // public ActionResult Create(NewCustomerViewModel viewModel)
         {
-            return View();
+            _context.Customers.Add(customer);//for modify object
+            _context.SaveChanges();
+
+            //redirecket user back to the list of customer
+            return RedirectToAction("Index", "Customer"); //index in customer controller
         }
 
+        public ActionResult Edit(int id)
+        {
+            var customer = _context.Customers.SingleOrDefault(c => c.Id == id);  //get customer from Id in db
+
+            if (customer == null) //if we given customer exist in db 
+                return HttpNotFound();
+
+            //the model behind the view is NewCustomerViewModel.. thas we create it
+            var viewModel = new CustomerFormViewModel
+            {
+                Customer = customer,
+                MembershipTypes = _context.MembershipTypes.ToList()
+            };
+
+            return View("CustomerForm", viewModel);
+        }
 
         public ViewResult Index()
         {
