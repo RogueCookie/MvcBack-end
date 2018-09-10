@@ -17,6 +17,7 @@ namespace Vidly.Models
         public Genre Genre { get; set; }//navigation property
 
         [Display(Name ="Genre")]
+        [Required]
         public byte GenreId { get; set; } //byte explicitly required //if  byte? - it will be optional (implicitly required)
 
         public DateTime DateAdded { get; set; }

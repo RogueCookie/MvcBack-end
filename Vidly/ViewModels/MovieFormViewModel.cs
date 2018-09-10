@@ -11,26 +11,24 @@ namespace Vidly.ViewModels
     {
         public IEnumerable<Genre> Genres { get; set; }
 
-        public int Id { get; set; }
+        public int? Id { get; set; }
 
-        [Required(ErrorMessage = "Please enter movie's name.")]
+        [Required]
         [StringLength(255)]
         public string Name { get; set; }
 
-        public Genre Genre { get; set; }//navigation property
-
         [Display(Name = "Genre")]
-        public byte GenreId { get; set; } //byte explicitly required //if  byte? - it will be optional (implicitly required)
+        [Required]
+        public byte? GenreId { get; set; } //byte explicitly required //if  byte? - it will be optional (implicitly required)
 
-        public DateTime DateAdded { get; set; }
-
-        [Display(Name = "Date of Release")]
-        public DateTime ReleaseDate { get; set; }
+        [Display(Name = "Date of Realease")]
+        [Required]
+        public DateTime? ReleaseDate { get; set; }
 
         [Display(Name = "Number in Stock")]
         [Range(1, 20)]
         [Required]
-        public byte NumberInStock { get; set; }
+        public byte? NumberInStock { get; set; }
 
 
         //public Movie Movie { get; set; }
