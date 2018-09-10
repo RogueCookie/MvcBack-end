@@ -7,7 +7,7 @@ using Vidly.Models;
 using Vidly.ViewModels;
 using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
-
+using System.Data.Entity.Validation;
 
 namespace Vidly.Controllers
 {
@@ -42,10 +42,10 @@ namespace Vidly.Controllers
         {
             if (movie.Id == 0)
             {
-                movie.DateAdded = DateTime.Now;
+                //movie.DateAdded = DateTime.Now;
                 _context.Movies.Add(movie);//saving data
             }
-            else
+            /*else
             {
                 var movieInDb = _context.Movies.Single(m => m.Id == movie.Id);        //update entity
 
@@ -54,8 +54,17 @@ namespace Vidly.Controllers
                 movieInDb.ReleaseDate = movie.ReleaseDate;
                 movieInDb.NumberInStock = movie.NumberInStock;
 
+            }*/
+            try
+            {
+                
+                _context.SaveChanges();
             }
-            _context.SaveChanges();
+            catch (DbEntityValidationException e)
+            {
+
+                Console.WriteLine(e);
+            }
 
             return RedirectToAction("Index","Movies"); //index in movies controller
         }
