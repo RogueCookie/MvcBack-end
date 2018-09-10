@@ -32,7 +32,13 @@ namespace Vidly.ViewModels
         [Required]
         public byte NumberInStock { get; set; }
 
+
         //public Movie Movie { get; set; }
+
+        public MovieFormViewModel()
+        {
+            Id = 0;
+        }
 
         public MovieFormViewModel(Movie movie)
         {
@@ -47,10 +53,7 @@ namespace Vidly.ViewModels
         {
             get
             {
-                if (Movie != null && Movie.Id != 0)
-                    return "Edit Movie";
-
-                return "New Movie";
+                return Id != 0 ? "Edit Movie" : "New Movie";
             }
         }
         /*or instead this use
