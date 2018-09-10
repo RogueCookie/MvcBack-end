@@ -38,7 +38,18 @@ namespace Vidly.Controllers
         public ActionResult Save(Customer customer)  //that calls "model biding". EF binds viewModel to request data
        // public ActionResult Create(NewCustomerViewModel viewModel)
         {
-            if(customer.Id == 0)//checked has customer Id or not. 0 means that's new customer/ otherwise we should update it
+            if (!ModelState.IsValid)      //To  get access to validation date
+            {
+                var viewModel = new CustomerFormViewModel
+                {
+                    Customer = customer,
+                    MembershipTypes = _context.MembershipTypes.ToList()
+
+                };
+                return View("CustomerForm", viewModel);
+            }
+
+            if (customer.Id == 0)//checked has customer Id or not. 0 means that's new customer/ otherwise we should update it
             //we relying on customer id
                 _context.Customers.Add(customer);//for modify object
             else
