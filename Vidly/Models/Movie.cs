@@ -17,10 +17,8 @@ namespace Vidly.Models
         [Required]
         public Genre Genre { get; set; }//navigation property
 
-        [Display(Name ="Genre Types")]
         public byte GenreId { get; set; } 
 
-        [Display(Name="Date of Addition")]
         public DateTime DateAdded { get; set; }
 
         [Display(Name ="Date of Release")]
