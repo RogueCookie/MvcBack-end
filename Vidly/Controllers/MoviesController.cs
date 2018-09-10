@@ -52,7 +52,6 @@ namespace Vidly.Controllers
             }
             
 
-
             if (movie.Id == 0)
             {
                 movie.DateAdded = DateTime.Now; //if Id = 0, i.e. new record, then assign DateAdded current data. Фича нужная
