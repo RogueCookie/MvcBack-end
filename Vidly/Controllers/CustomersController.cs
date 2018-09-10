@@ -31,7 +31,7 @@ namespace Vidly.Controllers
                 MembershipTypes = membershipTypes
             };
 
-            return View("CustomerForm");
+            return View("CustomerForm", viewModel);
         }
 
         [HttpPost]
@@ -57,7 +57,7 @@ namespace Vidly.Controllers
             _context.SaveChanges();
 
             //redirecket user back to the list of customer
-            return RedirectToAction("Index", "Customer"); //index in customer controller
+            return RedirectToAction("Index", "Customers"); //index in customer controller
         }
 
 
