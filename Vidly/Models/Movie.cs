@@ -10,14 +10,14 @@ namespace Vidly.Models
     {
         public int Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage ="Please enter movie's name.")]
         [StringLength(255)]
         public string Name { get; set; }
 
         public Genre Genre { get; set; }//navigation property
 
         [Display(Name ="Genre")]
-        public byte GenreId { get; set; } 
+        public byte GenreId { get; set; } //byte explicitly required //if  byte? - it will be optional (implicitly required)
 
         public DateTime DateAdded { get; set; }
 
@@ -25,6 +25,7 @@ namespace Vidly.Models
         public DateTime ReleaseDate { get; set; }
 
         [Display(Name ="Number in Stock")]
+        [Range(1, 20)]
         public byte NumberInStock { get; set; }
     }
 }
