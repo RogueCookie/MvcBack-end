@@ -34,13 +34,27 @@ namespace Vidly.Controllers
                 Genres = genres
             };
 
-            return View(viewModel);
+            return View("Create", viewModel);
         }
 
         [HttpPost]
         public ActionResult Save(Movie movie) //model binding
         {
-            _context.Movies.Add(movie);//saving data
+            if (movie.Id == 0)
+            {
+                movie.DateAdded = DateTime.Now;
+                _context.Movies.Add(movie);//saving data
+            }
+            else
+            {
+                var movieInDb = _context.Movies.Single(m => m.Id == movie.Id);        //update entity
+
+                movieInDb.Name = movie.Name;
+                movieInDb.GenreId = movie.GenreId;
+                movieInDb.ReleaseDate = movie.ReleaseDate;
+                movieInDb.NumberInStock = movie.NumberInStock;
+
+            }
             _context.SaveChanges();
 
             return RedirectToAction("Index","Movies"); //index in movies controller
