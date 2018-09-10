@@ -28,6 +28,7 @@ namespace Vidly.Controllers
 
         public ActionResult Create()
         {
+            var 
             return View();
         }
 
