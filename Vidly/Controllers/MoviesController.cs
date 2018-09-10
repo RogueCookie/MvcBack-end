@@ -37,7 +37,32 @@ namespace Vidly.Controllers
             return View(viewModel);
         }
 
-               
+        [HttpPost]
+        public ActionResult Save(Movie movie) //model binding
+        {
+            _context.Movies.Add(movie);//saving data
+            _context.SaveChanges();
+
+            return RedirectToAction("Index","Movies"); //index in movies controller
+        }
+        
+        public ActionResult Edit(int id)
+        {
+            var movie = _context.Movies.SingleOrDefault(m => m.Id == id);
+            if (movie == null)
+                return HttpNotFound();
+
+            var viewModel = new MovieFormViewModel
+            {
+                Movie = movie,
+                Genres = _context.Genres.ToList()
+            };
+
+            return View("Create", viewModel);
+        }
+
+
+
         public ViewResult Index()
         {
             var movies = _context.Movies.Include(m => m.Genre).ToList();
