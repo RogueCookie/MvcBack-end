@@ -37,6 +37,7 @@ namespace Vidly.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Customer customer)  //that calls "model biding". EF binds viewModel to request data
        // public ActionResult Create(NewCustomerViewModel viewModel)
         {
