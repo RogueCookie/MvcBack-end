@@ -42,10 +42,10 @@ namespace Vidly.Controllers
         {
             if (movie.Id == 0)
             {
-                //movie.DateAdded = DateTime.Now;
+                movie.DateAdded = DateTime.Now; //if Id = 0, i.e. new record, then assign DateAdded current data. Фича нужная
                 _context.Movies.Add(movie);//saving data
             }
-            /*else
+            else
             {
                 var movieInDb = _context.Movies.Single(m => m.Id == movie.Id);        //update entity
 
@@ -54,17 +54,8 @@ namespace Vidly.Controllers
                 movieInDb.ReleaseDate = movie.ReleaseDate;
                 movieInDb.NumberInStock = movie.NumberInStock;
 
-            }*/
-            try
-            {
-                
-                _context.SaveChanges();
             }
-            catch (DbEntityValidationException e)
-            {
-
-                Console.WriteLine(e);
-            }
+            _context.SaveChanges();
 
             return RedirectToAction("Index","Movies"); //index in movies controller
         }
