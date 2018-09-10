@@ -40,6 +40,18 @@ namespace Vidly.Controllers
         [HttpPost]
         public ActionResult Save(Movie movie) //model binding
         {
+            if(!ModelState.IsValid)
+            {
+                var viewModel = new MovieFormViewModel
+                {
+                    Movie = movie,
+                    Genres = _context.Genres.ToList()
+                };
+                return View("Create", viewModel);
+            }
+            
+
+
             if (movie.Id == 0)
             {
                 movie.DateAdded = DateTime.Now; //if Id = 0, i.e. new record, then assign DateAdded current data. Фича нужная
