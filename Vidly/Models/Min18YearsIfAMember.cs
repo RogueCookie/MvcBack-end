@@ -12,7 +12,8 @@ namespace Vidly.Models
         {
             var customer = (Customer)validationContext.ObjectInstance;
 
-            if (customer.MembershipTypeId == 0 || customer.MembershipTypeId == 1) //1-if customer does't select membership type
+            if (customer.MembershipTypeId == MembershipType.Unknown || 
+                customer.MembershipTypeId == MembershipType.PayAsYouGo) //1-if customer does't select membership type
                 return ValidationResult.Success;
 
             if (customer.Birthdate == null)
