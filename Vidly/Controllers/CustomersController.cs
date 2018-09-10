@@ -28,6 +28,8 @@ namespace Vidly.Controllers
             var membershipTypes = _context.MembershipTypes.ToList();
             var viewModel = new CustomerFormViewModel
             {
+                Customer = new Customer(),  //prop will be initialze by default value
+
                 MembershipTypes = membershipTypes
             };
 
