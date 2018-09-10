@@ -38,6 +38,7 @@
         @Html.LabelFor(m => m.Customer.MembershipTypeId)
         @Html.DropDownListFor(m => m.Customer.MembershipTypeId, new SelectList(Model.MembershipTypes, "Id", "Name"), "Select Membership Type", new { @class = "form-control" })
         @*new SelectList - suply a list items for dropdown list(list imem, specify a name of the prop in membersh class, prop that hols a text), "Empty string" or  *@
+        @Html.ValidationMessageFor(m => m.Customer.MembershipTypeId)
     </div>
    
     @*from getbootstrap.com (form)*@
