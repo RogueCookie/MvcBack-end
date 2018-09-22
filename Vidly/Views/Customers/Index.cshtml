@@ -21,7 +21,7 @@
 }
 else
 {
-    <table class="table table-bordered table-hover">
+    <table id="customers" class="table table-bordered table-hover">
         <thead>
             <tr>
                 <th>Customer</th>
@@ -38,7 +38,7 @@ else
                 @**<td>@customer.MembershipType.DiscountRate</td>*@
                 <td>@customer.MembershipType.Name</td>
                 <td>
-                    <button class="btn-link">Delete</button>
+                    <button class="btn-link js-delete">Delete</button>
                 </td>
             </tr>
             }
@@ -50,7 +50,9 @@ else
 {
     <script>
         $(document).ready(function () {
-
+            $("#customers .js-delete").on("click", function () {
+                confirm("Are you sure to delete this customer?");
+            });
         });
     </script>    
 }
