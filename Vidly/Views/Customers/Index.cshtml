@@ -54,18 +54,15 @@ else
                 var button = $(this);
                 bootbox.confirm("Are you sure to delete this customer?", function (result) {
                     if (result) {
-
+                        $.ajax({
+                            url: "/api/customers/" + button.attr("data-customer-id"),
+                            method: "DELETE",    @* set methos *@
+                            success: function () {
+                                button.parent("tr").remove;
+                            }
+                        });
                     }
                 });
-                if (confirm("Are you sure to delete this customer?")) {
-                    $.ajax({
-                        url: "/api/customers/" + button.attr("data-customer-id"),
-                        method: "DELETE",    @*set methos*@
-                        success: function () {
-                            button.parent("tr").remove;
-                        }
-                    });
-                }
             });
         });
     </script>    
