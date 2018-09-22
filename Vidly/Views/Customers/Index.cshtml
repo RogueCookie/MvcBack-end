@@ -51,12 +51,18 @@ else
     <script>
         $(document).ready(function () {
             $("#customers .js-delete").on("click", function () {
+                var button = $(this);
+                bootbox.confirm("Are you sure to delete this customer?", function (result) {
+                    if (result) {
+
+                    }
+                });
                 if (confirm("Are you sure to delete this customer?")) {
                     $.ajax({
-                        url: "/api/customers/" + $(this).attr("data-customer-id"),
+                        url: "/api/customers/" + button.attr("data-customer-id"),
                         method: "DELETE",    @*set methos*@
                         success: function () {
-                            console.log("Success");
+                            button.parent("tr").remove;
                         }
                     });
                 }
