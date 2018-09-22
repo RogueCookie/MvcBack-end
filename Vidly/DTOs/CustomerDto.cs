@@ -19,6 +19,7 @@ namespace Vidly.DTOs
 
         //exclude because this is domail class and here that property is create dependency from Dto to domain model
         //if we change this prop that impact Dto
+
         //public MembershipType MembershipType { get; set; }  
 
         public byte MembershipTypeId { get; set; }  
