@@ -22,7 +22,7 @@ namespace Vidly.Controllers.Api
         //response: GET/api/customer
         public IEnumerable<CustomerDto> GetCustomer()
         {
-            return _context.Customers.ToList().Select(Mapper.Map<Customer, CustomerDto>); //parentheses remove - we dont call this method here. it's reference to this method
+            return _context.Customers.ToList().Select(Mapper.Map<Customer, CustomerDto>); //parentheses remove - we dont call this method here. it's reference to this method (we delegate this method)
                                                                //<source, target types>
         }
 
