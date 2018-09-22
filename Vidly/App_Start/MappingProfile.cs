@@ -13,7 +13,10 @@ namespace Vidly.App_Start
         public MappingProfile()
         {
             Mapper.CreateMap<Customer, CustomerDto>();  //create mapper conficuration between two types
-            Mapper.CreateMap<CustomerDto, Customer>();  
+            Mapper.CreateMap<CustomerDto, Customer>();
+
+            Mapper.CreateMap<Movie, MovieDto>();
+            Mapper.CreateMap<MovieDto, Movie>();
         }
     }
 }
