@@ -50,8 +50,10 @@ else
 {
     <script>
         $(document).ready(function () {
-            $("#customers .js-delete").on("click", function () {
+            $("#customers").on("click", ".js-delete", function () {
+                @*if the click event, is raised from an element matching the selection, that function will be called*@
                 var button = $(this);
+
                 bootbox.confirm("Are you sure to delete this customer?", function (result) {
                     if (result) {
                         $.ajax({
