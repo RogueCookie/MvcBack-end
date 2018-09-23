@@ -94,9 +94,9 @@ namespace Vidly.Controllers
 
         public ViewResult Index()
         {
-            var customers = _context.Customers.Include(c => c.MembershipType).ToList(); //get all customers in db// that call "deferred executions"
+            //var customers = _context.Customers.Include(c => c.MembershipType).ToList(); //get all customers in db// that call "deferred executions"
                                         //for immidiatly executed query by calling ToList()
-            return View(customers);
+            return View();
         }
 
         public ActionResult Details(int id)
