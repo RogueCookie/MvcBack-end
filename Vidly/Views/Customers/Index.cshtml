@@ -30,9 +30,9 @@
 
 @section scripts
 {
-    <script>
+<script>
         $(document).ready(function () {
-            $("#customers").DataTable({ @* simple way to use datatable plug -in*@
+            var table = $("#customers").DataTable({ @* simple way to use datatable plug -in*@
                 @* configuration's object. create prop*@
                 ajax: {
                     url: "/api/customers",
@@ -56,7 +56,7 @@
                         }
                     }
                 ]
-            }); 
+            });
 
 
             $("#customers").on("click", ".js-delete", function () {
@@ -69,12 +69,12 @@
                             url: "/api/customers/" + button.attr("data-customer-id"),
                             method: "DELETE",    @* set methos *@
                             success: function () {
-                                button.parent("tr").remove;
+                                table.row(button.parent("tr")).remove().drow(); @*delete corresponding customer from the internal list maintain be db*@                            
                             }
                         });
                     }
                 });
             });
         });
-    </script>    
+    </script>
 }
