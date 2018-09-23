@@ -69,7 +69,7 @@
                             url: "/api/customers/" + button.attr("data-customer-id"),
                             method: "DELETE",    @* set methos *@
                             success: function () {
-                                table.row(button.parent("tr")).remove().drow(); @*delete corresponding customer from the internal list maintain be db*@                            
+                                table.row(button.parents("tr")).remove().drow(); @*delete corresponding customer from the internal list maintain be db*@                            
                             }
                         });
                     }
