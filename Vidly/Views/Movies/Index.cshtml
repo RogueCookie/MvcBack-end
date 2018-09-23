@@ -38,12 +38,15 @@
             $("#movies .js-delete").on("click", function () {
                 var button = $(this)
 
-                confirm("Are you sure you want to delete this movie?");
-                $.ajax({
-                    url: "/api/movies/" + button.attr("data-movie-id"),
-                    nethod: "DELETE",
-                    success: function () {
-                        button.parent("tr").remove();
+                bootbox.confirm("Are you sure you want to delete this movie?", function (result) {
+                    if (result) {
+                        $.ajax({
+                            url: "/api/movies/" + button.attr("data-movie-id"),
+                            nethod: "DELETE",
+                            success: function () {
+                                button.parent("tr").remove();
+                            }
+                        });
                     }
                 });
             });
