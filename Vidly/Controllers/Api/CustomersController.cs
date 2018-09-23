@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -22,7 +23,10 @@ namespace Vidly.Controllers.Api
         //response: GET/api/customer
         public IHttpActionResult GetCustomer()
         {
-            var customerDtos = _context.Customers.ToList().Select(Mapper.Map<Customer, CustomerDto>); //parentheses remove - we dont call this method here. it's reference to this method (we delegate this method)
+            var customerDtos = _context.Customers
+                .Include(c => c.MembershipType)
+                .ToList()
+                .Select(Mapper.Map<Customer, CustomerDto>); //parentheses remove - we dont call this method here. it's reference to this method (we delegate this method)
                                                                                                       //<source, target types>
             return Ok(customerDtos);
         }

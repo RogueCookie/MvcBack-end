@@ -21,6 +21,8 @@ namespace Vidly.DTOs
         //if we change this prop that impact Dto
         //public MembershipType MembershipType { get; set; }  
 
+        public MembershipTypeDto MembershipType { get; set; }
+
         public byte MembershipTypeId { get; set; }  
 
         //[Min18YearsIfAMember] //we need temporarily comment this attribute or we get an exeption
