@@ -46,21 +46,20 @@
             });
 
             $("#movies").on("click", ".js-delete", function () { @*no matter how many movies we have we have only one letter for all dlete button*@
-                var button = $(this)
+                var button = $(this);
 
                 bootbox.confirm("Are you sure you want to delete this movie?", function (result) {
                     if (result) {
                         $.ajax({
                             url: "/api/movies/" + button.attr("data-movie-id"),
-                            nethod: "DELETE",
+                            method: "DELETE",
                             success: function () {
-                                table.row(button.parents("tr")).remove().drow();
+                                table.row(button.parents("tr")).remove().draw();
                             }
                         });
                     }
                 });
             });
-
         });
     </script>
 }
