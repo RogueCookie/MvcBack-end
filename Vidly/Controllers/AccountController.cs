@@ -156,7 +156,7 @@ namespace Vidly.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    //we modify for assighn any new user to the store manager role
+                    /*//we modify for assighn any new user to the store manager role
                     //Temp code
                     var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext());        //create role store
                     var roleManager = new RoleManager<IdentityRole>(roleStore);
@@ -164,7 +164,7 @@ namespace Vidly.Controllers
                     await roleManager.CreateAsync(new IdentityRole("CanManageMovies"));
 
                     await UserManager.AddToRoleAsync(user.Id, "CanManageMovies");    //asighn a new user to role
-                            
+                       */     
 
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
