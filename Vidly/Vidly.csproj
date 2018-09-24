@@ -262,9 +262,9 @@
     <Compile Include="Migrations\201809090001037_Genres.Designer.cs">
       <DependentUpon>201809090001037_Genres.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201809242119405_SeedUsers.cs" />
-    <Compile Include="Migrations\201809242119405_SeedUsers.Designer.cs">
-      <DependentUpon>201809242119405_SeedUsers.cs</DependentUpon>
+    <Compile Include="Migrations\201809242342535_SeedUsersNew.cs" />
+    <Compile Include="Migrations\201809242342535_SeedUsersNew.Designer.cs">
+      <DependentUpon>201809242342535_SeedUsersNew.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -520,7 +520,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Movies\Random.cshtml" />
     <Content Include="Views\Shared\_NavBar.cshtml" />
     <Content Include="Views\Customers\Details.cshtml" />
     <Content Include="Views\Customers\Index.cshtml" />
@@ -528,6 +527,7 @@
     <Content Include="Views\Movies\Details.cshtml" />
     <Content Include="Views\Customers\CustomerForm.cshtml" />
     <Content Include="Views\Movies\Create.cshtml" />
+    <Content Include="Views\Movies\ReadOnlyList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -576,8 +576,8 @@
     <EmbeddedResource Include="Migrations\201809090001037_Genres.resx">
       <DependentUpon>201809090001037_Genres.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201809242119405_SeedUsers.resx">
-      <DependentUpon>201809242119405_SeedUsers.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201809242342535_SeedUsersNew.resx">
+      <DependentUpon>201809242342535_SeedUsersNew.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
