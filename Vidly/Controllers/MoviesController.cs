@@ -25,7 +25,7 @@ namespace Vidly.Controllers
             _context.Dispose();  
         }
 
-        [Authorize(Roles = "CanManageMovies")] //it's override thr global authorize filter
+        [Authorize(Roles = RoleName.CanManageMovies)] //it's override thr global authorize filter
         public ActionResult Create()
         {
             var genres = _context.Genres.ToList();
@@ -71,7 +71,8 @@ namespace Vidly.Controllers
 
             return RedirectToAction("Index","Movies"); //index in movies controller
         }
-        
+
+        [Authorize(Roles = RoleName.CanManageMovies)]
         public ActionResult Edit(int id)
         {
             var movie = _context.Movies.SingleOrDefault(m => m.Id == id);
@@ -90,7 +91,7 @@ namespace Vidly.Controllers
         
         public ViewResult Index()
         {
-            if(User.IsInRole("CanManageMovies"))
+            if(User.IsInRole(RoleName.CanManageMovies))
                 return View("List");
 
             return View("ReadOnlyList");
