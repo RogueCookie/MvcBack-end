@@ -25,7 +25,7 @@ namespace Vidly.Controllers
             _context.Dispose();  
         }
 
-
+        [Authorize(Roles = "CanManageMovies")] //it's override thr global authorize filter
         public ActionResult Create()
         {
             var genres = _context.Genres.ToList();
@@ -87,7 +87,7 @@ namespace Vidly.Controllers
         }
 
 
-
+        
         public ViewResult Index()
         {
             if(User.IsInRole("CanManageMovies"))
