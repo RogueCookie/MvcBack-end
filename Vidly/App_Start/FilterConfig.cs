@@ -9,6 +9,7 @@ namespace Vidly
         {
             filters.Add(new HandleErrorAttribute());
             filters.Add(new AuthorizeAttribute());//it's very restrictive/ you can go to home page without authorization
+            filters.Add(new RequireHttpsAttribute());// no longer available to http channel
         }
     }
 }
