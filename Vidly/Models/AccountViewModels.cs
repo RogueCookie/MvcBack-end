@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Vidly.Models
 {
-    public class ExternalLoginConfirmationViewModel
+    /*public class ExternalLoginConfirmationViewModel
     {
         [Required]
         [Display(Name = "Driving License")]
@@ -16,7 +16,7 @@ namespace Vidly.Models
         [Required]
         [Display(Name = "Mobile Phone")]
         public string Phone { get; set; }
-    }
+    }*/
 
     public class ExternalLoginListViewModel
     {
@@ -70,7 +70,7 @@ namespace Vidly.Models
         public bool RememberMe { get; set; }
     }
 
-    public class RegisterViewModel
+    /*public class RegisterViewModel
     {
         [Required]
         [Display(Name = "Driving License")]
@@ -96,7 +96,7 @@ namespace Vidly.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
-    }
+    }*/
 
     public class ResetPasswordViewModel
     {
