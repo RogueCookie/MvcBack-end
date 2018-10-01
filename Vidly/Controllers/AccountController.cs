@@ -149,7 +149,7 @@ namespace Vidly.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model) 
+        public async Task<ActionResult> Register(RegisterViewModel model) //here we initialize the app user
         {
             if (ModelState.IsValid)
             {

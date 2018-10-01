@@ -8,7 +8,7 @@ namespace Vidly.ViewModels
 {
     public class RegisterViewModel
     {
-        [Required]
+        [Required] //here we work with view model
         [Display(Name = "Driving License")]
         public string DrivingLicense { get; set; }
 
