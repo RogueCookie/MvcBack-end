@@ -164,7 +164,8 @@ namespace Vidly.Controllers
                 if (result.Succeeded)
                 {
                     /*//we modify for assighn any new user to the store manager role
-                    //Temp code
+                    //Temp code for populate database
+
                     var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext());        //create role store
                     var roleManager = new RoleManager<IdentityRole>(roleStore);
 
