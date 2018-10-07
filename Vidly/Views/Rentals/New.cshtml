@@ -1,0 +1,26 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "New Rental Form";
+    @*Layout = "~/Views/Home/About.cshtml"; it's default line here*@
+}
+
+<h2>New Rental Form</h2>
+
+@*@Ajax.BeginForm() only for mvc controller,nor for api*@
+
+@**zencoding*@
+<form>
+    <div class="form=group">
+        <label>Customer</label>
+        <input type="text" value="" class="form-control"/>
+    </div>   
+
+    <div class="form-group">
+        <label>Movie</label>
+        <input type="text" value="" class="form-control" />
+    </div>
+
+    <button class="btn btn-primary">Submit</button>
+</form>
+
