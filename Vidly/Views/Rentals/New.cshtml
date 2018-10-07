@@ -13,7 +13,7 @@
 <form>
     <div class="form=group">
         <label>Customer</label>
-        <input type="text" value="" class="form-control"/>
+        <input id="customer" type="text" value="" class="form-control"/>
     </div>   
 
     <div class="form-group">
@@ -24,3 +24,27 @@
     <button class="btn btn-primary">Submit</button>
 </form>
 
+@section scripts
+{
+    <script>
+        $(dicument).ready(function () {
+            var customers = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                remote: {
+                    url: '/api/customers?query=%QUERY',
+                    wildcard: '%QUERY'
+                }
+            });
+
+            $('#customer').typeahead({
+                minLenght: 3,
+                highlight: true
+            }, {
+                name: 'customers',
+                    display: 'name',
+                    source: customers
+            });
+        });
+    </script>    
+}
