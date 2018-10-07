@@ -13,21 +13,32 @@
 <form>
     <div class="form=group">
         <label>Customer</label>
-        <input id="customer" type="text" value="" class="form-control"/>
+        <div class="tt-container">
+            <input id="customer" type="text" value="" class="form-control" />
+        </div>
     </div>   
 
     <div class="form-group">
         <label>Movie</label>
-        <input type="text" value="" class="form-control" />
+        <div class="tt-container">
+            <input id="movie" type="text" value="" class="form-control" />
+        </div>
     </div>
 
-    <button class="btn btn-primary">Submit</button>
+        <ul id="movies" class="list-group"></ul>
+
+        <button class="btn btn-primary">Submit</button>
 </form>
 
 @section scripts
 {
-    <script>
-        $(dicument).ready(function () {
+<script>
+        $(document).ready(function () {
+
+            var vm = {
+                movieIds: []
+            };
+
             var customers = new Bloodhound({
                 datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
                 queryTokenizer: Bloodhound.tokenizers.whitespace,
@@ -44,7 +55,36 @@
                 name: 'customers',
                     display: 'name',
                     source: customers
+                }).on("typeahead:select", function (e, customer) {
+                    vm.customerId = customer.id;
+                });
+            var movies = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                remote: {
+                    url: '/api/movies?query=%QUERY',
+                    wildcard: '%QUERY'
+                }
             });
+
+
+
+            $('#movie').typeahead({
+                minLength: 3,
+                highlight: true
+            }, {
+                    name: 'movies',
+                    display: 'name',
+                    source: movies
+            }).on("typeahead:select", function (e, movie) {
+                $("#movies").append("<li class='list-group-item'>" + movie.name + "</li>");
+
+                $("#movie").typeahead("val", "");
+
+                vm.movieIds.push(movie.id);
+
+            });
+
         });
-    </script>    
+</script>    
 }
