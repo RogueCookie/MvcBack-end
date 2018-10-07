@@ -19,13 +19,26 @@ namespace Vidly.Controllers.Api
         }
         
         [HttpPost]
-        public IHttpActionResult CreateNewRenral(NewRentalDto newRental)
+        public IHttpActionResult CreateNewRenral(NewRentalDto newRental) //input
         {
-            var customer = _context.Customers.Single(c => c.Id == newRental.CustomerId);
+            var customer = _context.Customers.Single(c => c.Id == newRental.CustomerId);//if set invalid custId this line get throe an exeption
+            /*
+            //this approach not for API, it's internal use
+            
+            var customer = _context.Customers.SingleOrDefault(c => c.Id == newRental.CustomerId);
 
-            var movies = _context.Movies.Where(m => newRental.MovieId.Contains(m.Id)).ToList();
+            if (customer == null)
+                return BadRequest("Invalid customer ID");
+                */
 
-            foreach (var movie in movies)
+            var movies = _context.Movies.Where(m => newRental.MovieId.Contains(m.Id)).ToList();  
+            /* that's translate as a sql (сиквел) method like this:
+            SELECT *
+            FROM Movies
+            WHERE Id (1,2,3)
+            */
+
+            foreach (var movie in movies) 
             {
                 if (movie.NumbersAvailable == 0)
                     return BadRequest("Movie is not available");
@@ -33,7 +46,7 @@ namespace Vidly.Controllers.Api
                 movie.NumbersAvailable--;
 
 
-                var rental = new Rentals
+                var rental = new Rentals //for each movie we create a rental object
                 {
                     Customer = customer,
                     Movie = movie,
@@ -43,6 +56,7 @@ namespace Vidly.Controllers.Api
                 _context.Rentals.Add(rental);
             }
             _context.SaveChanges();
+
             return Ok();
         }
     }
